@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+
+  traccar:
+    image: gfiguero/traccar
+    build:
+      context: .
+      dockerfile: traccar.Dockerfile
+    ports:
+      - "80:8082"
+      - "5000-5150:5000-5150"
+      - "5000-5150:5000-5150/udp"
+    volumes:
+      - ./logs:/opt/traccar/logs
+      - ./traccar.xml:/opt/traccar/conf/traccar.xml
